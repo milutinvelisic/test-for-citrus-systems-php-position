@@ -18,8 +18,20 @@ if(isset($_GET['page'])){
             $commentsController = new CommentController($db);
             $commentsController->insertComment();
             break;
+        case "changeComment":
+            $commentsController = new CommentController($db);
+            $commentsController->changeComment();
+            break;
         case 'login':
             $loginController = new LoginController($db);
             $loginController->loginPage();
+        case "doLogin":
+            $loginController = new LoginController($db);
+            $loginController->doLogin();
+            break;
+        case "logout":
+            $loginController = new LoginController($db);
+            $loginController->doLogout();
+            break;
     }
 }

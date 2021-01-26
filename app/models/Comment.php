@@ -17,6 +17,10 @@ class Comment
         return $this->database->executeGet("select * from comments where status = 1");
     }
 
+    public function getAllComments(){
+        return $this->database->executeGet("select * from comments");
+    }
+
     public function insertComment($email, $title, $text){
 
         $params = [
@@ -35,6 +39,14 @@ class Comment
             echo $ex->getMessage();
         }
 
+    }
+
+    public function changeComment($id){
+        $prep = $this->database->conn->prepare("UPDATE comments set status = 1 where idComment = ?");
+        $res = $prep->execute([$id]);
+        if($res){
+            return true;
+        }
     }
 
 }

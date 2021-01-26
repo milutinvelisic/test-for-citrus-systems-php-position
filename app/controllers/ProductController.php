@@ -23,7 +23,8 @@ class ProductController extends Controller
     {
         $this->loadView("product", [
             'products' =>  $this->productModel->getAll(),
-            'comments' => $this->commentModel->getAllActiveComments()
+            'comments' => $this->commentModel->getAllActiveComments(),
+            'allComments' => $this->commentModel->getAllComments()
         ]);
     }
 

@@ -12,4 +12,8 @@ class User
         $this->database = $database;
     }
 
+    public function findUser($email, $password){
+        return $this->database->executeNonGet( "SELECT * from users where email = ? and password = ?", [$email, $password]);
+    }
+
 }

@@ -37,7 +37,7 @@ class CommentController extends Controller
 
             $result = $this->commentModel->insertComment($_POST['email'], $_POST['title'], $_POST['text']);
             if($result){
-                header('Location: index.php?page=products');
+                $this->redirect('index.php?page=products');
             }else{
                 array_push($errors, "There has been an error, pleas try again later!");
                 $this->loadView('products', [
@@ -49,9 +49,22 @@ class CommentController extends Controller
                 "errors" => $errors
             ]);
         }
+    }
 
+    public function changeComment(){
+        if(isset($_POST['idComment'])){
+            $comment = $this->commentModel->changeComment($_POST['idComment']);
 
-
+            if($comment){
+                $this->redirect('index.php?page=products');
+            }else{
+                $errors = [];
+                array_push($errors, "Server error, please try again!");
+                $this->loadView('products', [
+                    "errors" => $errors
+                ]);
+            }
+        }
     }
 
 }

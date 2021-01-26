@@ -33,4 +33,10 @@ class Database
         return $this->conn->query($query)->fetchAll();
     }
 
+    public function executeNonGet($query, Array $params) {
+        $prepared = $this->conn->prepare($query);
+        $prepared->execute($params);
+        return $result = $prepared->fetch();
+    }
+
 }

@@ -1,6 +1,20 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-12">
+            <?php
+            if(isset($_SESSION['user'])):
+            ?>
+
+            <a href="index.php?page=logout">Logout</a>
+            <?php
+            else:
+            ?>
+            <a href="index.php?page=login">Login</a>
+            <?php
+            endif;
+            ?>
+        </div>
+        <div class="col-md-12">
             <h1>Product strana</h1>
         </div>
     </div>
@@ -28,7 +42,8 @@
         </div>
         <div class="col-md-12 mt-5 mb-5">
             <?php
-            foreach ($data['comments'] as $comment):
+            if(isset($_SESSION['user']) && $_SESSION['user']->idRole == 1):
+            foreach ($data['allComments'] as $comment):
             ?>
             <div class="col-7">
                 <div class="card card-white post">
@@ -49,10 +64,49 @@
                     <div class="post-description">
                         <p><?= $comment->text ?></p>
                     </div>
+                    <?php
+                    if($comment->status != 1):
+                    ?>
+                    <div class="post-description">
+                        <form action="index.php?page=changeComment" method="post">
+                            <input type="hidden" name="idComment" value="<?= $comment->idComment ?>">
+                            <button type="submit">Make this comment public</button>
+                        </form>
+                    </div>
+                    <?php
+                    endif;
+                    ?>
                 </div>
             </div>
             <?php
             endforeach;
+            else:
+                foreach ($data['comments'] as $comment):
+            ?>
+            <div class="col-7">
+                <div class="card card-white post">
+                    <div class="post-heading">
+                        <div class="float-left image">
+
+                        </div>
+                        <div class="float-left meta">
+                            <div class="title h4 mb-3">
+                                <b><?= $comment->title ?></b>
+
+                            </div>
+                            <div class="title h5">
+                                <b><?= $comment->email ?></b> made a post.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="post-description">
+                        <p><?= $comment->text ?></p>
+                    </div>
+                </div>
+            </div>
+            <?php
+            endforeach;
+            endif;
             ?>
         </div>
     </div>
