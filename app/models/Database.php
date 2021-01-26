@@ -29,4 +29,8 @@ class Database
         $this->conn->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
     }
 
+    public function executeGet($query) {
+        return $this->conn->query($query)->fetchAll();
+    }
+
 }
