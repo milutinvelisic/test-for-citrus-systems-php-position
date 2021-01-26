@@ -5,8 +5,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>winter</title>
-    <link rel="icon" href="public/img/some_img/favicon.png">
+    <title>Test</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="public/css/bootstrap.min.css">
     <!-- style CSS -->

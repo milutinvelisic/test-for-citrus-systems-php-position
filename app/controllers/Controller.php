@@ -8,7 +8,7 @@ class Controller
     protected function loadView($view, $data = null)
     {
         require_once 'app/views/fixed/header.php';
-        require_once 'app/views/' . $view . ".php";
+        require_once 'app/views/pages/' . $view . ".php";
         require_once 'app/views/fixed/footer.php';
     }
 
