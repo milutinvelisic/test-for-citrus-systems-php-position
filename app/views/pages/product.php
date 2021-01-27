@@ -68,14 +68,29 @@
                     if($comment->status != 1):
                     ?>
                     <div class="post-description">
-                        <form action="index.php?page=changeComment" method="post">
+                        <form action="index.php?page=activateComment" method="post">
                             <input type="hidden" name="idComment" value="<?= $comment->idComment ?>">
                             <button type="submit">Make this comment public</button>
                         </form>
                     </div>
                     <?php
+                    else:
+                    ?>
+                    <div class="post-description">
+                        <form action="index.php?page=deactivateComment" method="post">
+                            <input type="hidden" name="idComment" value="<?= $comment->idComment ?>">
+                            <button type="submit">Make this comment private</button>
+                        </form>
+                    </div>
+                    <?php
                     endif;
                     ?>
+                    <div class="post-description">
+                        <form action="index.php?page=deleteComment" method="post">
+                            <input type="hidden" name="idComment" value="<?= $comment->idComment ?>">
+                            <button type="submit" class="btn-danger">Delete Comment</button>
+                        </form>
+                    </div>
                 </div>
             </div>
             <?php
@@ -117,7 +132,6 @@
         </div>
         <div class="col-md-5 mb-5">
             <?php
-
             if(isset($data["errors"])) {
                 echo "<ul>";
                 foreach($data["errors"] as $e) {
@@ -131,16 +145,16 @@
             <form action="index.php?page=insertComment" method="POST">
                 <div class="form-group">
                     <label for="exampleInputEmail1">Comment title</label>
-                    <input type="text" name="title" class="form-control" id="exampleInputEmail1" placeholder="Enter comment title">
+                    <input type="text" name="title" class="form-control" placeholder="Enter comment title" required>
                 </div>
                 <div class="form-group">
                     <label for="exampleInputEmail1">Email address</label>
-                    <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                    <input type="email" name="email" class="form-control"  placeholder="Enter email" required>
                     <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
                 </div>
                 <div class="form-group">
                     <label for="exampleFormControlTextarea1">Enter comment</label>
-                    <textarea name="text" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                    <textarea name="text" class="form-control" id="exampleFormControlTextarea1" rows="3" required></textarea>
                 </div>
                 <button type="submit" class="btn btn-primary">Post Comment</button>
             </form>

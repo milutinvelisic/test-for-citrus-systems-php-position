@@ -39,4 +39,12 @@ class Database
         return $result = $prepared->fetch();
     }
 
+    public function deleteSomething($query, $params){
+        $prepared = $this->conn->prepare($query);
+        $res = $prepared->execute([$params]);
+        if($res){
+            return true;
+        }
+    }
+
 }

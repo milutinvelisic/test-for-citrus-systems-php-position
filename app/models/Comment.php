@@ -24,8 +24,8 @@ class Comment
     public function insertComment($email, $title, $text){
 
         $params = [
-            $email,
             $title,
+            $email,
             $text
         ];
 
@@ -41,12 +41,24 @@ class Comment
 
     }
 
-    public function changeComment($id){
+    public function activateComment($id){
         $prep = $this->database->conn->prepare("UPDATE comments set status = 1 where idComment = ?");
         $res = $prep->execute([$id]);
         if($res){
             return true;
         }
+    }
+
+    public function deactivateComment($id){
+        $prep = $this->database->conn->prepare("UPDATE comments set status = 0 where idComment = ?");
+        $res = $prep->execute([$id]);
+        if($res){
+            return true;
+        }
+    }
+
+    public function deleteComment($id){
+        return $this->database->deleteSomething("delete from comments where idComment = ?", $id);
     }
 
 }

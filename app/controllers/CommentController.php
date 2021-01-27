@@ -51,9 +51,42 @@ class CommentController extends Controller
         }
     }
 
-    public function changeComment(){
+    public function activateComment(){
         if(isset($_POST['idComment'])){
-            $comment = $this->commentModel->changeComment($_POST['idComment']);
+            $comment = $this->commentModel->activateComment($_POST['idComment']);
+
+            if($comment){
+                $this->redirect('index.php?page=products');
+            }else{
+                $errors = [];
+                array_push($errors, "Server error, please try again!");
+                $this->loadView('products', [
+                    "errors" => $errors
+                ]);
+            }
+        }
+    }
+
+    public function deactivateComment(){
+        if(isset($_POST['idComment'])){
+            $comment = $this->commentModel->deactivateComment($_POST['idComment']);
+
+            if($comment){
+                $this->redirect('index.php?page=products');
+            }else{
+                $errors = [];
+                array_push($errors, "Server error, please try again!");
+                $this->loadView('products', [
+                    "errors" => $errors
+                ]);
+            }
+        }
+    }
+
+
+    public function deleteComment(){
+        if(isset($_POST['idComment'])){
+            $comment = $this->commentModel->deleteComment($_POST['idComment']);
 
             if($comment){
                 $this->redirect('index.php?page=products');

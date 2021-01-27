@@ -18,9 +18,17 @@ if(isset($_GET['page'])){
             $commentsController = new CommentController($db);
             $commentsController->insertComment();
             break;
-        case "changeComment":
+        case "activateComment":
             $commentsController = new CommentController($db);
-            $commentsController->changeComment();
+            $commentsController->activateComment();
+            break;
+        case "deactivateComment":
+            $commentsController = new CommentController($db);
+            $commentsController->deactivateComment();
+            break;
+        case "deleteComment":
+            $commentsController = new CommentController($db);
+            $commentsController->deleteComment();
             break;
         case 'login':
             $loginController = new LoginController($db);
