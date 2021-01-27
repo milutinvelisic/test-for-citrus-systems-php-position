@@ -6,5 +6,5 @@ Admin user credentials are email pera@gmail.com, and password pera123.
 Regular user credentials are email mika@gmail.com, and password mika123.
 Products are listed in 3x3 grid.
 Comments are listed down below. Non-users and regular users can see public comments.
-Admin can see all comments and decide which one to make public or delete.
+Admin can see all comments and decide which one to make public or private or delete.
 Form for creating comments is below listed comments.
