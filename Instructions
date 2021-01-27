@@ -1,0 +1,10 @@
+Project folder needs to be inside 'htdocs' folder in Xampp.
+In PhpMyAdmin make database called 'test' and import 'test.sql' file which is included in folder.
+Main routes are index.php?page=products and index.php?page=login.
+All folders are protected with .htaccess file.
+Admin user credentials are email pera@gmail.com, and password pera123.
+Regular user credentials are email mika@gmail.com, and password mika123.
+Products are listed in 3x3 grid.
+Comments are listed down below. Non-users and regular users can see public comments.
+Admin can see all comments and decide which one to make public or delete.
+Form for creating comments is below listed comments.
