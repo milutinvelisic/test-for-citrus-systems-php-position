@@ -1,6 +1,7 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-5">
+            <a href="index.php?page=products">Products</a>
             <form method="post" action="index.php?page=doLogin">
                 <div class="form-group">
                     <label for="exampleInputEmail1">Email address</label>
